@@ -1,4 +1,5 @@
 require_relative "./board.rb"
+require_relative "nullpiece.rb"
 
 class Piece
     def initialize(color, board, pos)

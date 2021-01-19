@@ -1,0 +1,11 @@
+require_relative "./piece.rb"
+
+class Rook < Piece
+    def symbol
+    end
+
+    private
+
+    def move_dirs
+    end
+end

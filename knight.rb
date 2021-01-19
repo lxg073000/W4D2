@@ -1,11 +1,11 @@
 require_relative "./piece.rb"
 
-class Bishop < Piece
+class Knight < Piece
     def symbol
     end
 
-    private
+    protected
 
-    def move_dirs
+    def move_diffs
     end
 end
