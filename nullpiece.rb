@@ -1,16 +1,17 @@
-# require_relative "piece.rb"
+require_relative "piece.rb"
+require "Singleton"
 
-# class NullPiece < Piece 
-#     include Singleton 
+class NullPiece < Piece 
+    include Singleton 
     
-#     def initialize 
+    def initialize 
 
-#     end
+    end
 
-#     def moves
-#     end
+    def moves
+    end
 
-#     def symbol
-#     end
+    def symbol
+    end
 
-# end
+end
