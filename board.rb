@@ -42,14 +42,15 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    raise 'there is no piece at start_pos' if !self[start_pos].is_a?(Piece)
+    raise 'there is no piece at start_pos' if self[start_pos].is_a?(NullPiece)
     raise 'invalid position' if end_pos.any?{|i| i > 7 || i < 0}
     
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
   end
 
   def valid_pos?(pos)
-
+    return false if pos.any? {|i| i < 0 || i > 7}
+    true
   end
 
   def add_piece(piece, pos)

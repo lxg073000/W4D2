@@ -8,9 +8,10 @@ class Queen < Piece
         '♕'.colorize(@color)
     end
 
-    private
+    # private
 
     def move_dirs
+        debugger
         self.horizontal_dirs + self.diagonal_dirs
     end
 end

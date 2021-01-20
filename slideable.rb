@@ -27,6 +27,7 @@ module Slideable
   end
   # should return an array of places a Piece can move to
   def moves
+    debugger
     # create array to collect moves
     # iterate over each of the directions in which a slideable piece can move
       # use the Piece subclass' `#move_dirs` method to get this info
@@ -63,25 +64,26 @@ module Slideable
     moves = [] 
     curr_pos = @pos
     i = 1 
-    while valid_pos([curr_pos[0] + dx * i, curr_pos[1] + dy * i])
-      moves << [curr_pos[0] + dx*i, curr_pos[1] + dy*i]  
-      i += 1 
-    end 
-    moves 
+
+    while self.board.valid_pos?([curr_pos[0] + dx * i, curr_pos[1] + dy * i])
+      # moves << [curr_pos[0] + dx*i, curr_pos[1] + dy*i]  
+      # i += 1 
+      next_pos = [curr_pos[0] + dx * i, curr_pos[1] + dy * i]
+      next_piece = self.board[next_pos]
+      if !self.board[next_pos].empty?
+        if next_piece.color == self.color
+          return moves
+        else
+          moves << next_pos
+          return moves
+        end
+      else
+        moves << next_pos
+        i += 1
+      end
+    end
+    moves
   end
-
-  def valid_pos(pos) 
-    #check if pos is on board
-    #check if pos is empty
-    #if not empty, check color of occupying piece
-    debugger 
-    return false if pos.any? {|i| i < 0 || i > 7}
-
-    self.board.[]=(pos,val) 
-    
-
-  end
-
 
 
 

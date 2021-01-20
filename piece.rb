@@ -1,7 +1,7 @@
 require "byebug"
 
 class Piece
-    attr_reader :board 
+    attr_reader :board, :color
 
     def initialize(color, board, pos)
         @color = color  # is a symbol
@@ -10,7 +10,11 @@ class Piece
     end    
 
     def to_s
-        self.Symbol 
+        self.symbol 
+    end
+
+    def inspect
+        self.symbol
     end
 
     def empty? 
@@ -22,8 +26,8 @@ class Piece
     def pos=(val)
     end
 
-    def Symbol
-        self.symbol 
+    def symbol
+        
     end
 
     def move_into_check?(endpos)
