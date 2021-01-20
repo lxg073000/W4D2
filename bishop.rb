@@ -25,8 +25,15 @@ class Bishop < Piece
     # if there's no piece and pos is valid, add subarray
     # to new pos until no longer valid
     
+    diag_dir = [
+    [-1, -1], # up + left
+    [-1, 1], # up + right
+    [1, -1], # down + left
+    [1, 1]  # down + right
+  ]
     possible_pos = []
-    @@DIAGONAL_DIRS.each do |dir|
+    diag_dir.each do |dir|
+    #@@DIAGONAL_DIRS.each do |dir|
         i = 1
         while valid_pos([@pos[0] + dir[0]*i, @pos[1] + dir[1]*i])
             possible_pos << [@pos[0] + dir[0]*i, @pos[1] + dir[1]*i]
