@@ -1,34 +1,36 @@
 require_relative "./piece.rb"
 require_relative "./nullpiece.rb"
+require "byebug"
+require_relative "bishop.rb"
+require_relative "rook.rb"
+require_relative "knight.rb"
+require_relative "queen.rb"
+require_relative "king.rb"
+require_relative "pawn.rb"
 
 class Board
   attr_reader :rows
 
   def initialize
     @rows = Array.new(8) {Array.new(8)}
-    # [ [ , , , , , , , ,] ,
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,],
-    #   [ , , , , , , , ,] ]
-
-    # iterate through every pos on board 
-    # if pos is in row 0,1,6, or 7 ? initialize with a piece : null piece
     @nullpiece = NullPiece.instance
+    pieces = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
     @rows = @rows.each_with_index do |row, i|
       row.each_with_index do |ele, j|
-        if [0,1].include?(i)
-          @rows[i][j] = Piece.new(:B, self, [i,j])
-        elsif[6,7].include?(i)
-          @rows[i][j] = Piece.new(:W, self, [i,j])
+        if i == 0 
+          @rows[i][j] = pieces[j].new(:black, self, [i,j])
+        elsif i == 1 
+          @rows[i][j] = Pawn.new(:black, self, [i,j])
+        elsif i == 6 
+          @rows[i][j] = Pawn.new(:white, self, [i,j]) 
+        elsif i == 7 
+          @rows[i][j] = pieces[j].new(:white, self, [i,j]) 
         else
           @rows[i][j] = @nullpiece
-        end
+        end 
       end
-    end    
+    end
+    
   end
 
   def [](pos)
@@ -47,6 +49,7 @@ class Board
   end
 
   def valid_pos?(pos)
+
   end
 
   def add_piece(piece, pos)
@@ -71,3 +74,4 @@ class Board
 
   end
 end
+

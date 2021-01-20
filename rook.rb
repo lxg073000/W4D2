@@ -1,7 +1,9 @@
 require_relative "./piece.rb"
+require 'colorize'
 
 class Rook < Piece
     def symbol
+        '♖'.colorize(@color)
     end
 
     private

@@ -12,6 +12,7 @@ class NullPiece < Piece
     end
 
     def symbol
+        "nil"
     end
 
 end
